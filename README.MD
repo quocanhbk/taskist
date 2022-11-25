@@ -1,3 +1,8 @@
+## TASKIST
+A small php project to manage your tasks. Referenced from `Todoist` app.
+
+---
+
 ### How to run development server
 1. Install Docker and Docker Compose
 2. Run `docker compose up` in the root directory
