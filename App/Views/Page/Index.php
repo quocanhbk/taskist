@@ -11,6 +11,11 @@
 <body>
     <div class="container-fluid">
         <h1>TO DO LIST</h1>
+        <?php 
+            foreach ($tasks as $task) {
+                echo "<div>{$task['task']}</div>";
+            }
+        ?>
     </div>
 </body>
 </html>
