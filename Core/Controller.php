@@ -2,4 +2,11 @@
 
 namespace Core;
 
-abstract class Controller {}
+abstract class Controller
+{
+    public function redirect($url)
+    {
+        header("Location: " . $url);
+        exit();
+    }
+}

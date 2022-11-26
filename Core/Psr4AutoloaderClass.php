@@ -2,26 +2,26 @@
 
 namespace Core;
 
-class Psr4AutoloaderClass {
-
+class Psr4AutoloaderClass
+{
     /**
      * An associative array where the key is a namespace prefix and the value
      * is an array of base directories for classes in that namespace.
      *
      * @var array
      */
-    protected $prefixes = array();
+    protected $prefixes = [];
 
     /**
      * The construct
-     * 
-     * The constructor takes the already defined routes from the file 
+     *
+     * The constructor takes the already defined routes from the file
      * and inserts it into the object.
      *
      * @return void
      */
-    public function __construct() {
-
+    public function __construct()
+    {
         $in = APPLICATION_PATH . "/App/Namespaces.php";
 
         if (!is_file($in)) {
@@ -36,8 +36,9 @@ class Psr4AutoloaderClass {
      *
      * @return void
      */
-    public function register() {
-        spl_autoload_register(array($this, 'loadClass'));
+    public function register()
+    {
+        spl_autoload_register([$this, "loadClass"]);
     }
 
     /**
@@ -51,16 +52,17 @@ class Psr4AutoloaderClass {
      * than last.
      * @return void
      */
-    public function addNamespace($prefix, $base_dir, $prepend = false) {
+    public function addNamespace($prefix, $base_dir, $prepend = false)
+    {
         // normalize namespace prefix
-        $prefix = trim($prefix, '\\') . '\\';
+        $prefix = trim($prefix, "\\") . "\\";
 
         // normalize the base directory with a trailing separator
-        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . '/';
+        $base_dir = rtrim($base_dir, DIRECTORY_SEPARATOR) . "/";
 
         // initialize the namespace prefix array
         if (isset($this->prefixes[$prefix]) === false) {
-            $this->prefixes[$prefix] = array();
+            $this->prefixes[$prefix] = [];
         }
         die(var_dump($prefix, $base_dir));
         // retain the base directory for the namespace prefix
@@ -78,14 +80,14 @@ class Psr4AutoloaderClass {
      * @return mixed The mapped file name on success, or boolean false on
      * failure.
      */
-    public function loadClass($class) {
+    public function loadClass($class)
+    {
         // the current namespace prefix
         $prefix = $class;
 
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
-        while (false !== $pos = strrpos($prefix, '\\')) {
-
+        while (false !== ($pos = strrpos($prefix, "\\"))) {
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
 
@@ -101,7 +103,7 @@ class Psr4AutoloaderClass {
 
             // remove the trailing namespace separator for the next iteration
             // of strrpos()
-            $prefix = rtrim($prefix, '\\');
+            $prefix = rtrim($prefix, "\\");
         }
 
         // never found a mapped file
@@ -116,7 +118,8 @@ class Psr4AutoloaderClass {
      * @return mixed Boolean false if no mapped file can be loaded, or the
      * name of the mapped file that was loaded.
      */
-    protected function loadMappedFile($prefix, $relative_class) {
+    protected function loadMappedFile($prefix, $relative_class)
+    {
         // are there any base directories for this namespace prefix?
         if (isset($this->prefixes[$prefix]) === false) {
             return false;
@@ -124,14 +127,12 @@ class Psr4AutoloaderClass {
 
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
-
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
 
-            $file = $base_dir
-                    . str_replace('\\', '/', $relative_class)
-                    . '.php';
+            $file =
+                $base_dir . str_replace("\\", "/", $relative_class) . ".php";
 
             // if the mapped file exists, require it
             if ($this->requireFile(APPLICATION_PATH . $file)) {
@@ -150,12 +151,12 @@ class Psr4AutoloaderClass {
      * @param string $file The file to require.
      * @return bool True if the file exists, false if not.
      */
-    protected function requireFile($file) {
+    protected function requireFile($file)
+    {
         if (file_exists($file)) {
             require $file;
             return true;
         }
         return false;
     }
-
 }

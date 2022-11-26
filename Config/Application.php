@@ -2,6 +2,7 @@
 
 namespace Config;
 
-class Application {
-    const DEFAULT_ROUTE = '/';
+class Application
+{
+    const DEFAULT_ROUTE = "/";
 }

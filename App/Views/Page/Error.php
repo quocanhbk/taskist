@@ -8,8 +8,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title><?php echo $title ?></title>
-        <?php View::render("Libraries/Bootstrap") ?>
+        <title><?php echo $title; ?></title>
+        <?php View::render("Libraries/Bootstrap"); ?>
     </head>
     <body class="bg-light">
         <div class="container py-4 d-flex align-items-center justify-content-center vh-100">

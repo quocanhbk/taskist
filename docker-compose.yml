@@ -31,6 +31,3 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - PMA_HOST=db
       - PMA_PORT=3306
-
-
-    

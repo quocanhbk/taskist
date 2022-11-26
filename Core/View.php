@@ -2,8 +2,10 @@
 
 namespace Core;
 
-class View {
-    static function render(string $view, array $params = []): void {
+class View
+{
+    static function render(string $view, array $params = []): void
+    {
         extract($params, EXTR_SKIP);
 
         $file = APPLICATION_PATH . "/App/Views/$view.php";
@@ -19,7 +21,8 @@ class View {
         }
     }
 
-    static function renderError(array $params): void {
+    static function renderError(array $params): void
+    {
         extract($params, EXTR_SKIP);
 
         $file = APPLICATION_PATH . "/App/Views/Page/Error.php";
