@@ -1,6 +1,5 @@
 <?php
-use Core\View;
-?>
+use Core\View; ?>
 
 <!DOCTYPE html>
 <html lang="en">

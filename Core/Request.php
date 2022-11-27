@@ -35,5 +35,4 @@ class Request
     {
         self::$queries = $queries;
     }
-
 }

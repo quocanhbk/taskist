@@ -35,14 +35,18 @@ class Router
                 $route_segments = explode("/", trim($route, "/"));
                 if (
                     count($url_segments) === count($route_segments) &&
-                    count(array_intersect($url_segments, $route_segments)) > 0 &&
-                    count(array_intersect($url_segments, $route_segments)) >= $max
+                    count(array_intersect($url_segments, $route_segments)) >
+                        0 &&
+                    count(array_intersect($url_segments, $route_segments)) >=
+                        $max
                 ) {
                     $r = [
                         "route" => $route,
                         "controller" => $controller,
                     ];
-                    $max = count(array_intersect($url_segments, $route_segments));
+                    $max = count(
+                        array_intersect($url_segments, $route_segments)
+                    );
                 }
             }
         }
@@ -53,7 +57,7 @@ class Router
     public function extractUrlParams(string $url): void
     {
         $url_segments = explode("/", trim($url, "/"));
-        $route_segments = explode("/", trim($this->route['route'], "/"));
+        $route_segments = explode("/", trim($this->route["route"], "/"));
 
         $params = [];
         for ($i = 0; $i < count($route_segments); $i++) {
@@ -68,7 +72,7 @@ class Router
 
     public function extractUrlQueries(): void
     {
-        $query_string = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY); 
+        $query_string = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
 
         $queries = [];
         if ($query_string) {
