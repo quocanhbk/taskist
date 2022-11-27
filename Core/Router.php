@@ -4,78 +4,118 @@ namespace Core;
 
 use Config\Application;
 
-class Router {
+class Router
+{
     protected $routes = [];
 
     private $route = null;
 
-    public function __construct() {
-        $routes = APPLICATION_PATH . '/App/Routes.php';
+    public function __construct()
+    {
+        $routes = APPLICATION_PATH . "/App/Routes.php";
 
         if (is_readable($routes)) {
             $this->routes = require_once $routes;
         } else {
-            throw new \Exception('Routes.php not found');
+            throw new \Exception("Routes.php not found");
         }
     }
 
-    private function checkRoute(string $url, string $method): iterable {
-        // trim the url
+    private function checkRoute(string $url, string $method): iterable
+    {
+        $r = [
+            "route" => null,
+            "controller" => null,
+        ];
+
+        $max = 0;
         if (isset($this->routes[$method])) {
             foreach ($this->routes[$method] as $route => $controller) {
-                if (preg_match("#^{$route}$#", $url)) {
-                    return [
-                        'route' => $route,
-                        'controller' => $controller
+                $url_segments = explode("/", trim($url, "/"));
+                $route_segments = explode("/", trim($route, "/"));
+                if (
+                    count($url_segments) === count($route_segments) &&
+                    count(array_intersect($url_segments, $route_segments)) >
+                        0 &&
+                    count(array_intersect($url_segments, $route_segments)) >=
+                        $max
+                ) {
+                    $r = [
+                        "route" => $route,
+                        "controller" => $controller,
                     ];
+                    $max = count(
+                        array_intersect($url_segments, $route_segments)
+                    );
                 }
             }
         }
 
-        return [
-            'route' => null,
-            'controller' => null
-        ];
+        return $r;
     }
 
-    public function extractUrlParams(string $url): void {
-        $params_string = trim(str_replace($this->route, '', $url), '/');
+    public function extractUrlParams(string $url): void
+    {
+        $url_segments = explode("/", trim($url, "/"));
+        $route_segments = explode("/", trim($this->route["route"], "/"));
 
-        $params = explode('/', $params_string);
-
-        $params = array_filter($params, function($param) {
-            return !empty($param);
-        });
+        $params = [];
+        for ($i = 0; $i < count($route_segments); $i++) {
+            if (strpos($route_segments[$i], ":") !== false) {
+                $param = str_replace(":", "", $route_segments[$i]);
+                $params[$param] = $url_segments[$i];
+            }
+        }
 
         Request::setParams($params);
     }
 
-    private function runRoute(): void {
-        $controller_class = explode('@', $this->route['controller'])[0];
+    public function extractUrlQueries(): void
+    {
+        $query_string = parse_url($_SERVER["REQUEST_URI"], PHP_URL_QUERY);
 
-        error_log('App\Controllers\\' . $controller_class);
+        $queries = [];
+        if ($query_string) {
+            parse_str($query_string, $queries);
+        }
 
-        if (class_exists('App\Controllers\\' . $controller_class)) {
-            $controller = 'App\Controllers\\' . $controller_class;
+        Request::setQueries($queries);
+    }
+
+    private function runRoute(): void
+    {
+        $controller_class = explode("@", $this->route["controller"])[0];
+
+        if (class_exists("App\Controllers\\" . $controller_class)) {
+            $controller = "App\Controllers\\" . $controller_class;
 
             $controller = new $controller();
 
-            $method = explode('@', $this->route['controller'])[1];
+            $method = explode("@", $this->route["controller"])[1];
 
             if (method_exists($controller, $method)) {
                 $controller->$method();
             } else {
-                throw new \Exception('Method ' . $method . ' not found in ' . $controller_class);
+                throw new \Exception(
+                    "Method " . $method . " not found in " . $controller_class
+                );
             }
         } else {
-            throw new \Exception('Controller ' . $controller_class . ' not found', 404);
+            throw new \Exception(
+                "Controller " . $controller_class . " not found",
+                404
+            );
         }
     }
 
-    public function dispatch(): void {
-        $url = $_SERVER['REQUEST_URI'];
+    public function dispatch(): void
+    {
+        $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
-        $method = $_SERVER['REQUEST_METHOD'];
+        // trim out / at the end
+        $url = rtrim($url, "/");
+
+        $method = $_SERVER["REQUEST_METHOD"];
 
         if ($url === "" || $url === "/") {
             $url = Application::DEFAULT_ROUTE;
@@ -83,11 +123,12 @@ class Router {
 
         $this->route = $this->checkRoute($url, $method);
 
-        if ($this->route['route'] === null) {
-            throw new \Exception('Route not found', 404);
+        if ($this->route["route"] === null) {
+            throw new \Exception("Route not found", 404);
         }
 
         $this->extractUrlParams($url);
+        $this->extractUrlQueries();
 
         $this->runRoute();
     }

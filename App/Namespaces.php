@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Core\\' => ['/Core/'],
-    'App\\' => ['/App/'],
-    'Config\\' => ['/Config/']
+    "Core\\" => ["/Core/"],
+    "App\\" => ["/App/"],
+    "Config\\" => ["/Config/"],
 ];
