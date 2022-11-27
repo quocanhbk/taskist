@@ -9,7 +9,7 @@ use Core\View;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taskist</title>
+    <title>Pricing | Taskist</title>
     <?php View::render("Libraries/Bootstrap"); ?>
 </head>
 
@@ -17,7 +17,7 @@ use Core\View;
     <div class="d-flex flex-column vh-100">
         <?php View::render("Components/NavBar"); ?>
         <div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-center">
-            <h1>HOME PAGE - TO DO</h1>
+            <h1>PRICING PAGE - TO DO</h1>
         </div>
     </div>
 </body>

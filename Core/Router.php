@@ -58,8 +58,6 @@ class Router
     {
         $controller_class = explode("@", $this->route["controller"])[0];
 
-        error_log("App\Controllers\\" . $controller_class);
-
         if (class_exists("App\Controllers\\" . $controller_class)) {
             $controller = "App\Controllers\\" . $controller_class;
 
@@ -84,7 +82,8 @@ class Router
 
     public function dispatch(): void
     {
-        $url = $_SERVER["REQUEST_URI"];
+        $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+
         // trim out / at the end
         $url = rtrim($url, "/");
 
