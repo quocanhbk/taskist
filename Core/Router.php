@@ -85,6 +85,8 @@ class Router
     public function dispatch(): void
     {
         $url = $_SERVER["REQUEST_URI"];
+        // trim out / at the end
+        $url = rtrim($url, "/");
 
         $method = $_SERVER["REQUEST_METHOD"];
 

@@ -3,9 +3,9 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-define("APPLICATION_PATH", __DIR__);
+define('APPLICATION_PATH', substr(realpath(dirname(__FILE__)), 0, -6));
 
-require "./Core/Psr4AutoloaderClass.php";
+require "../Core/Psr4AutoloaderClass.php";
 
 $loader = new \Core\Psr4AutoloaderClass();
 $loader->register();
