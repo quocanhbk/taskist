@@ -3,8 +3,7 @@
 use Core\Session;
 use Core\View;
 
-$session = new Session();
-$user = $session->get("user");
+$user = Session::get('user');
 $current_url = $_SERVER["REQUEST_URI"];
 $menu = [
     ["name" => "Home", "url" => "/"],

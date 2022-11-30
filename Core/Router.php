@@ -28,15 +28,31 @@ class Router
             "controller" => null,
         ];
 
-        $max = 0;
+        $max = 1;
         if (isset($this->routes[$method])) {
+            // sort routes by params count
+            uksort($this->routes[$method], function ($a, $b) {
+                $a_params_count = count(array_filter(
+                    explode("/", trim($a, "/")), 
+                    function ($v) {
+                        return strpos($v, ":") === 0;
+                    }
+                ));
+                $b_params_count = count(array_filter(
+                    explode("/", trim($b, "/")), 
+                    function ($v) {
+                        return strpos($v, ":") === 0;
+                    }
+                ));
+
+                return $a_params_count - $b_params_count;
+            });
+
             foreach ($this->routes[$method] as $route => $controller) {
                 $url_segments = explode("/", trim($url, "/"));
                 $route_segments = explode("/", trim($route, "/"));
                 if (
                     count($url_segments) === count($route_segments) &&
-                    count(array_intersect($url_segments, $route_segments)) >
-                        0 &&
                     count(array_intersect($url_segments, $route_segments)) >=
                         $max
                 ) {

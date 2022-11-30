@@ -4,13 +4,10 @@ namespace Core;
 
 class Session
 {
-    private static $sessionStarted = false;
-
     public function __construct()
     {
-        if (self::$sessionStarted == false) {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
-            self::$sessionStarted = true;
         }
     }
 
@@ -19,7 +16,7 @@ class Session
         $_SESSION[$key] = $value;
     }
 
-    public function get($key)
+    public static function get($key)
     {
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
