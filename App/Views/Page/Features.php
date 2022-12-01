@@ -12,11 +12,34 @@ use Core\View; ?>
     <?php View::render("Libraries/Bootstrap"); ?>
 </head>
 
+<style>
+#con-first{
+    background-image: url("img/features-hero-bg-w_2348.webp");
+    background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
 <body>
     <div class="d-flex flex-column vh-100">
         <?php View::render("Components/NavBar"); ?>
-        <div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-center">
-            <h1>FEATURES PAGE - TO DO</h1>
+        <div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-center flex-column" id="con-first">
+            <h1>FROM OVERWHELMED TO ON TOP OF IT</h1><br>
+            <img src="bg-1.jpg" alt="no">
+            <p style="text-align: center; padding-left: 20px; padding-right:20px ;">Todoist gives you the confidence that everything’s organized and accounted for, so you can make progress on the things that are important to you.</p>
         </div>
     </div>
 </body>
