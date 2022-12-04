@@ -45,6 +45,17 @@ body{
     margin-bottom: 200px;
 }
 
+.btn-select{
+    background-color: #065535!important;
+    color: white!important;
+    margin: 10px;
+    margin-left: 0px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+
 .btn-section{
     background-color: #E8E8E8;
     margin: 10px;
@@ -53,8 +64,29 @@ body{
     border-radius: 10px;
 }
 
+
+
 .btn-section:hover{
     background-color: lightgrey;
+}
+
+
+li{
+    padding: 25px;
+    justify-content: center;
+}
+
+#getstarted{
+    background-color: #065535;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#getstarted:hover{
+    background-color: #0b9c62;
 }
 
 </style>
@@ -74,12 +106,15 @@ body{
             let p = btn[i].getElementsByTagName("p");
             if (p[0] .style.display === "block") {
                 p[0].style.display = "none";
-                btn[i].style.backgroundColor = "#E8E8E8";
+                btn[i].style.backgroundColor = "";
+                btn[i].style.color = "";
+                btn[i].classList.remove('btn-select');
             }  
         }
 
         y[0].style.display = "block";
-        str.style.backgroundColor = "#ffe4e1";
+        //str.style.backgroundColor = "#ffe4e1";
+        str.classList.add('btn-select');
 
         img = 'img-feature/' + img + '.webp';
         console.log(img);
@@ -143,7 +178,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'quickadd',2)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'quickadd',2)"  class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Quick add</h3>
                             <p style="display: block;">
                             lets you capture and organize tasks in seconds.
@@ -196,7 +231,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'priority',3)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'priority',3)" class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Priority levels</h3>
                             <p style="display: block;">
                             highlight the day's most important tasks.
@@ -257,7 +292,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'delegate',4)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'delegate',4)" class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Delegate tasks</h3>
                             <p style="display: block;">
                             to other people and free up your mental space. 
@@ -302,7 +337,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'board',5)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'board',5)" class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Boards</h3>
                             <p style="display: block;">
                             help you see the big picture with Kanban-style cards.
@@ -371,7 +406,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'addtask',6)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'addtask',6)" class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Add tasks via email</h3>
                             <p style="display: block;">
                             by forwarding emails into Todoist as tasks or comments.
@@ -429,7 +464,7 @@ body{
                     </div>
 
                     <div style="margin-top: 50px;">
-                        <div role="button" onclick="Toggle(this,'productivity',7)" class="btn-section" style = "background-color: #ffe4e1;">
+                        <div role="button" onclick="Toggle(this,'productivity',7)" class="btn-section" class = "btn-select" style="background-color: #065535;color: white;" >
                             <h3>Productivity visualizations</h3>
                             <p style="display: block;">
                             by week and month help you stay on track to achieve your goals.
@@ -477,6 +512,81 @@ body{
         </div>
         </div>
     <!-- end-page7 -->
+
+
+
+    <!-- page8 -->
+
+    <div class="container-fluid flex-grow-1 align-items-center justify-content-center flex-column" id="page8" style="background-size: 50%; background-repeat: no-repeat; background-position-x: 100%; background-position-y: 0px;">
+            <div class="row" style="margin-top: 100px; margin-bottom: 100px; padding-left: 100px;">
+                
+                <class class="col-5 text-align-left">
+                    <h1 style="font-size: 60px;">
+                    Connect Taskist to your world
+                    </h1>
+                    <h4 style="text-align:justify ; margin-top: 100px; line-height: 1.6;">
+                        Link Taskist with the apps you already use and make it your central, organized hub for getting things done.
+                    </h4>
+                </class>
+
+            </div>
+            
+            
+            <div class="row justify-content-center" style="margin-top: 100px; margin-bottom: 100px; padding-left: 100px;">
+                <div class="col-10">
+                    
+                        <ul style="display: flex; list-style: none; align-items: center;">
+                            <li><a href=""><img src="img-feature/logocalendar.webp" alt="logocalendar" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logoiftt.webp" alt="logoiftt" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logozapier.webp" alt="logozapier" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logoamazone.webp" alt="logoamazone" width="80%"></a></li>
+                        </ul>
+                </div>        
+            </div>
+
+
+            
+    </div>
+    <!-- end-page8 -->
+
+
+
+    <div class="container-fluid flex-grow-1 align-items-center justify-content-center flex-column" id="page9" style=" background-color: #E8E8E8;background-size: 50%; background-repeat: no-repeat; background-position-x: 100%; background-position-y: 0px;">
+        <hr>
+        <hr>
+        <div class="row" style="margin-top: 100px; margin-bottom: 100px; padding-left: 100px;" style="background-color: #E8E8E8;">
+                
+                <class class="col-5 text-align-left">
+                    <h3 style="text-align:justify ; margin-top: 100px; line-height: 1.6;">
+                        Life shouldn't be chaos.
+                    </h3>
+                    <h1 style="font-size: 60px; margin-bottom: 50px;">
+                        Keep it all together with Taskist.
+                    </h1>
+                    <button onclick="" id="getstarted">
+                        Get started
+                    </button>
+                </class>
+
+            </div>
+            
+            
+            <div class="row justify-content-center" style="margin-top: 100px; margin-bottom: 100px; padding-left: 100px;">
+                <div class="col-10">
+                    
+                        <ul style="display: flex; list-style: none; align-items: center;">
+                            <li><a href=""><img src="img-feature/logocalendar.webp" alt="logocalendar" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logoiftt.webp" alt="logoiftt" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logozapier.webp" alt="logozapier" width="80%"></a></li>
+                            <li><a href=""><img src="img-feature/logoamazone.webp" alt="logoamazone" width="80%"></a></li>
+                        </ul>
+                </div>        
+            </div>
+
+
+            
+    </div>
+    <!-- end-page9 -->
 
 
 
