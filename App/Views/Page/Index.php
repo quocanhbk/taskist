@@ -66,7 +66,7 @@ use Core\View; ?>
                     <h1 style="max-width: 30rem;" class="text-center">
                         "Todoist makes it easy to go as simple or as complex as you want"</h1>
                     <h2 class="text-secondary fs-5">- Somebody</h2>
-                    <a href="/features" style="text-decoration: none; mt-2;">Explore more features</a>
+                    <a href="/features" style="text-decoration: none;" class="mt-2">Explore more features</a>
                     <img src="https://images.pexels.com/photos/131979/pexels-photo-131979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         alt="Taskist" style="width: 30rem;" class="rounded mt-5">
                 </div>

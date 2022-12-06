@@ -8,7 +8,6 @@ return [
         "/app" => "AppController@index",
         "/features" => "FeaturesController@index",
         "/pricing" => "PricingController@index",
-        "/news" => "NewsController@index",
         "/profile" => "ProfileController@index",
     ],
     "POST" => [

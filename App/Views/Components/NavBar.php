@@ -9,7 +9,6 @@ $menu = [
     ["name" => "Home", "url" => "/"],
     ["name" => "Features", "url" => "/features"],
     ["name" => "Pricing", "url" => "/pricing"],
-    ["name" => "News", "url" => "/news"],
 ];
 
 $active_menu = null;
