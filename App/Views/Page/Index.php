@@ -12,106 +12,74 @@ use Core\View; ?>
     <?php View::render("Libraries/Bootstrap"); ?>
 </head>
 <style>
-#container
-{
+#container {
     background-image: url("https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000");
     background-size: cover;
 }
 </style>
 
 <body>
-    <div class="overflow-auto d-flex flex-column justify-content-around" id="container">
+    <div class="d-flex flex-column vh-100 bg-light">
         <?php View::render("Components/NavBar"); ?>
-        <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div>
-        <div class="container-fluid d-flex align-items-center justify-content-center">
-            <div class="p-3 text-wrap" style="width: 80%;"> <p class="fs-1 fw-bolder text-center"> Welcome to our Home Page of Taskist : A best app to organize your life. </p>  </div>
-        </div>
-        <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div>
-        <div class="container-fluid d-flex flex-sm-row flex-column flex-grow-1 align-items-center justify-content-around">
-            <div class="card bg-warning" style="width: 14rem;">
-                <img src="https://todoist.com/_next/static/images/icon-3_934c1a18c604c9a66c9b964a973bea5f.webp" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"> Customize Todoist </h5>
-                    <p class="card-text"> Customize your lists with filters, labels, priority levels and more. </p>
+        <div class="overflow-auto d-flex flex-column align-items-center">
+            <div class="container-fluid d-flex flex-column align-items-center">
+                <div class="text-center p-5 d-flex w-100 align-items-center flex-column"
+                    style="margin-top: 6rem; margin-bottom: 4rem; ">
+                    <h1 style="font-size: 4rem; font-family: 'Racing Sans One'; width: 40rem;">
+                        Organize your work and life, finally.
+                    </h1>
+                    <p class="fs-4" style="width: 40rem;">
+                        Become focused, organized, and calm with <span class="fw-bold">Taskist</span>. The world’s #1
+                        task manager and to-do list app.
+                    </p>
+                    <a class="btn btn-primary btn-lg mt-2" href="/register">Start for free</a>
+                </div>
+                <img src="https://images.pexels.com/photos/796602/pexels-photo-796602.jpeg" alt="Taskist"
+                    style="width: 50rem;margin-bottom: 12rem;" class="rounded">
+
+                <div class="d-flex container justify-content-between" style="margin-bottom: 12rem;">
+                    <div style="width: 30rem;">
+                        <p class="mb-1" style="font-size: 0.8rem;">Get more done</p>
+                        <h2 class="fw-semibold mb-1">Add your tasks.</h2>
+                        <h2 class="fw-semibold mb-1">Organize your life.</h2>
+                        <h2 class="fw-semibold mb-2">Achieve more every day.</h2>
+                        <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut at iure
+                            placeat. Provident omnis
+                            eveniet earum tempora quis quae at!</p>
+                    </div>
+                    <img src="https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Taskist" style="width: 30rem" class="rounded">
+                </div>
+                <div class="d-flex container justify-content-between" style="margin-bottom: 12rem;">
+                    <img src="https://images.pexels.com/photos/3243/pen-calendar-to-do-checklist.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Taskist" style="width: 30rem" class="rounded">
+                    <div style="width: 30rem;">
+                        <p class="mb-1" style="font-size: 0.8rem;">Clear your mind</p>
+                        <h2 class="fw-semibold mb-1">Reach that mental clarity</h2>
+                        <h2 class="fw-semibold mb-1">you've been longing for.</h2>
+                        <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut at iure
+                            placeat. Provident omnis
+                            eveniet earum tempora quis quae at!</p>
+                    </div>
+                </div>
+                <div class="container d-flex flex-column align-items-center" style="margin-bottom: 12rem;">
+                    <h1 style="max-width: 30rem;" class="text-center">
+                        "Todoist makes it easy to go as simple or as complex as you want"</h1>
+                    <h2 class="text-secondary fs-5">- Somebody</h2>
+                    <a href="/features" style="text-decoration: none; mt-2;">Explore more features</a>
+                    <img src="https://images.pexels.com/photos/131979/pexels-photo-131979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Taskist" style="width: 30rem;" class="rounded mt-5">
                 </div>
             </div>
-            <div class="card bg-danger" style="width: 14rem;">
-                <img src="https://todoist.com/_next/static/images/icon-4_f546eb9c7155fd7ea242af71babeeeca.webp" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"> Connect all your tools </h5>
-                    <p class="card-text"> Connect Todoist to your calendar, voice assistant, and over 30 additional tools. </p>
-                </div>
-            </div>
-            <div class="card bg-info" style="width: 14rem;">
-                <img src="https://todoist.com/_next/static/images/icon-1_ad640abe99c49ae1a0c9eb05bb104956.webp" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"> Always by your side </h5>
-                    <p class="card-text fs-small"> Use Todoist apps, extensions, and widgets on all your devices and platforms. </p>
-                </div>
-            </div>
-            <div class="card bg-dark text-white" style="width: 14rem;">
-                <img src="https://todoist.com/_next/static/images/icon-5_e69e3f0df7d5163b16ea9cd82df9bec9.webp" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"> Productivity methods </h5>
-                    <p class="card-text"> Personal productivity recommendations based on your traits and strengths. </p>
-                </div>
-            </div>
-            <div class="card bg-secondary text-white" style="width: 14rem;">
-                <img src="https://todoist.com/_next/static/images/icon-2_4210d085bc16b95d19ee9605ca20a8d5.webp" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"> Models to sell </h5>
-                    <p class="card-text"> Download dozens of templates to get your projects started, whatever they may be. </p>
-                </div>
-            </div>
-        </div>
-        <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div>
-        <div class="container-fluid justify-content-center align-items-center">
-            <div class="row">
-                <div class="col fw-bolder fs-2 text-left text-wrap" style="width:20rem;"> A famous and trusted scheduler </div>
-                <div class="col d-flex flex-row justify-content-around">
-                    <img src="https://todoist.com/_next/static/images/icon-1_f82782a12a887c709e39ecf02741af8a.webp" alt="No" style="width: 20%; height: 80%;">
-                    <img src="https://todoist.com/_next/static/images/icon-2_3cdfd11975b2d14cf4ee942720cd1cc7.webp" alt="No" style="width: 20%; height: 80%;">
-                    <img src="https://todoist.com/_next/static/images/icon-3_3909c68a367c5cce654cd2d9ae010f52.webp" alt="No" style="width: 20%; height: 80%;">
-                    <img src="https://todoist.com/_next/static/images/icon-4_a178c84304f35d44c31fbc4aa3f660f5.webp" alt="No" style="width: 20%; height: 80%;">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col"> 
-                    <p class="text-right text-wrap" style="width:20rem;"> We are constantly receiving positive feedbacks from customers. We are still developing </p>
-                </div>
-                <div class="col d-flex flex-row justify-content-around">
-                    <p class="text-wrap text-center" style="width: 10rem;"> <b> Over 100 </b> downloads </p>
-                    <p class="text-wrap text-center" style="width: 10rem;"> <b> Over 3000 tasks </b> completed </p>
-                    <p class="text-wrap text-center" style="width: 10rem;"> Downloads <b> over 15 </b> contries </p>
-                    <p class="text-wrap text-center" style="width: 10rem;"> <b> 30 users </b> gone Pro </p>
+            <div id="footer" class="container-fluid bg-dark p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-light mb-0 fs-4" style="font-family: 'Racing Sans One'">Taskist</p>
+                    <a href="https://github.com/quocanhbk/taskist" target="_blank" class="text-info">Github</a>
+                    <p class="text-light mb-0">December 2022</p>
                 </div>
             </div>
         </div>
-        <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div>
-        <div class="container-fluid d-flex flex-row flex-grow-1 align-items-center justify-content-around">
-            <div class="fw-bolder fst-italic"> Start managing with Taskist </div>
-            <div class="fw-bolder fst-italic"> Already have an account ? </div> 
-        </div>
-        <div class="p-4"> </div>
-        <div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-around">
-            <a href="register" class="btn btn-primary"> Get Started </a>
-            <a href="login" class="btn btn-primary"> Login </a>
-        </div>
-        <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div> <div class="p-4"> </div>
-        <div class="p-4 container-fluid border border-dark bg-dark">
-            <div class="container-fluid d-flex flex-grow-1 justify-content-around">
-                <a href="" class="text-white"> Home </a>
-                <a href="pricing" class="text-white"> Pricing </a>
-                <a href="features" class="text-white"> Features </a>
-                <a href="news" class="text-white"> News </a>
-            </div>
-            <div class="p-4"> </div>
-            <div class="container-fluid d-flex flex-grow-1 justify-content-around">
-                <p class="text-white"> Contact us : (+84) 899 048 832 </p>
-                <p class="text-white"> Contact us : supersuperthang2002@gmail.com </p>
-            </div>
-        </div>
-        
     </div>
 </body>
+
 </html>
