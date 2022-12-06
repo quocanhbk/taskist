@@ -33,4 +33,14 @@ class User extends Model
 
         return $stmt->fetch();
     }
+
+    public function updateAvatar($user_id, $avatar)
+    {
+        $sql = "UPDATE $this->_table SET avatar = :avatar WHERE id = :id";
+        $stmt = $this->DB()->prepare($sql);
+        $stmt->execute([
+            "avatar" => $avatar,
+            "id" => $user_id,
+        ]);
+    }
 }

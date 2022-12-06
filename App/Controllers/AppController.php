@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Task;
 use Core\Controller;
+use Core\Request;
 use Core\Session;
 use Core\View;
 
@@ -16,6 +18,13 @@ class AppController extends Controller
             return $this->redirect("/");
         }
 
-        View::render("Page/App");
+        $status = Request::getQuery("status");
+
+        $model = new Task();
+        $tasks = $model->getTasks($session->get("user")["id"], $status);
+
+        View::render("Page/App", [
+            "tasks" => $tasks
+        ]);
     }
 }

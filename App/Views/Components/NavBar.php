@@ -48,7 +48,7 @@ foreach ($menu as $item) {
                     Register
                 </button>
             </a>
-            <?php } ?>
+            <?php } else  View::render("Components/UserBadge", ["user" => $user]); ?>
         </div>
     </div>
 </nav>
