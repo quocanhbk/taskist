@@ -39,6 +39,11 @@ class ProfileController extends Controller
             return $this->redirect("/profile");
         }
 
+        // check if file is image
+        if (!in_array($avatar["type"], ["image/jpeg", "image/png"])) {
+            return $this->redirect("/profile");
+        }
+
         // check if file is less than 2MB
         if ($avatar["size"] > 2000000) {
             return $this->redirect("/profile");
